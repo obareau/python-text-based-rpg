@@ -28,10 +28,11 @@ def _make_messages():
     messages = {}
 
     for entity_name, entity_prefix in DATA["prefixes"].items():
-        entity_messages = {}
+        entity_messages = {
+            message_name: f"{entity_prefix} {message}"
+            for message_name, message in DATA["templates"].items()
+        }
 
-        for message_name, message in DATA["templates"].items():
-            entity_messages[message_name] = entity_prefix + " " + message
 
         messages[entity_name] = entity_messages
 

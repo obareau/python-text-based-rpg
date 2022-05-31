@@ -29,8 +29,9 @@ def use_item_interface(player):
         commands.append("back")
 
         interface.print_(
-            "You must enter " + interface.generate_readable_list(commands)
+            f"You must enter {interface.generate_readable_list(commands)}"
         )
+
 
         command = interface.get_command(commands)
 
@@ -53,11 +54,10 @@ def use_item_interface(player):
             DATA["messages"]["item_consumed"].format(item_to_use.display_name)
         )
 
-        health_restored = player.entity.health - prior_health
         stamina_restored = player.entity.stamina - prior_stamina
         mana_restored = player.entity.mana - prior_mana
 
-        if health_restored:
+        if health_restored := player.entity.health - prior_health:
             interface.print_(
                 DATA["messages"]["item_consumed_effect"].format(
                     amount=health_restored,

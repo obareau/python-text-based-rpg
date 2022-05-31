@@ -25,8 +25,9 @@ def _make_full_list_of_stats():
     """
     list_of_stats = DATA["_other_stats"].copy()
     list_of_stats.extend(
-        ["maximum_" + value_name for value_name in DATA["entity_values"]]
+        [f"maximum_{value_name}" for value_name in DATA["entity_values"]]
     )
+
     return list_of_stats
 
 DATA["stats"] = _make_full_list_of_stats()

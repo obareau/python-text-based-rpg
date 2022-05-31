@@ -22,16 +22,27 @@ def _generate_amount_of_value_to_restore(entity, value_name, multiplier=1):
 
     """
     amount_to_restore = round(
-        getattr(entity, "maximum_" + value_name) * \
-        entity.composure / 100 * \
-        3 / 8 * \
-        generate_random_multiplier() * \
-        multiplier
+        (
+            (
+                (
+                    (
+                        (
+                            getattr(entity, f"maximum_{value_name}")
+                            * entity.composure
+                        )
+                        / 100
+                    )
+                    * 3
+                )
+                / 8
+            )
+            * generate_random_multiplier()
+            * multiplier
+        )
     )
 
-    if amount_to_restore < 1:
-        amount_to_restore = 1
 
+    amount_to_restore = max(amount_to_restore, 1)
     return amount_to_restore
 
 def restore_stamina_and_mana(entity, multiplier=1):

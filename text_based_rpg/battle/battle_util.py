@@ -32,10 +32,7 @@ def get_entity_name(battle, entity):
         "player" if the given entity represents the player in the battle.
 
     """
-    if entity in [battle.player, battle.player.entity]:
-        return "player"
-
-    return "enemy"
+    return "player" if entity in [battle.player, battle.player.entity] else "enemy"
 
 def get_opponent(battle, entity):
     """

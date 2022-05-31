@@ -23,14 +23,14 @@ def generate_readable_list(list_to_process):
 
     """
     # Put quotes around each string.
-    processed_list = ["\"{}\"".format(item) for item in list_to_process]
+    processed_list = [f'"{item}"' for item in list_to_process]
 
     if len(processed_list) > 1:
-        processed_list.append("or " + processed_list.pop())
+        processed_list.append(f"or {processed_list.pop()}")
 
     delimiter = " "
 
     if len(processed_list) > 2:
-        delimiter = "," + delimiter
+        delimiter = f",{delimiter}"
 
     return delimiter.join(processed_list)

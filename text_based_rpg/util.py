@@ -43,9 +43,10 @@ def _generate_random_value(upper_limit):
     return random.randint(1, upper_limit)
 
 def resolve_random_condition(chances_data):
-    sum_of_chances = sum([
+    sum_of_chances = sum(
         individual_chance_data[1] for individual_chance_data in chances_data
-    ])
+    )
+
 
     random_value = _generate_random_value(sum_of_chances)
     range_checked = 0

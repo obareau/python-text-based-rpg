@@ -22,9 +22,7 @@ def get_command(commands, list_options=False):
     """
     while True:
         if list_options == True:
-            print_(
-                "You may enter: " + generate_readable_list(commands)
-            )
+            print_(f"You may enter: {generate_readable_list(commands)}")
 
         received_input = get_input()
 

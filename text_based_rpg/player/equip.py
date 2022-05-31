@@ -19,11 +19,9 @@ def equip(self, item_to_equip):
     if item_to_equip.type != item.EQUIPPABLE:
         raise ItemIsNotEquippableError
 
-    item_currently_equipped = self.equipped_items.get(
+    if item_currently_equipped := self.equipped_items.get(
         item_to_equip.equip_location
-    )
-
-    if item_currently_equipped:
+    ):
         interface.print_(DATA["messages"]["item_already_equipped"].format(
             item=item_currently_equipped.display_name
         ))

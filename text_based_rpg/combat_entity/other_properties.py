@@ -17,16 +17,14 @@ def evasion(entity):
 
 @property
 def usable_attacks(entity):
-    usable_attacks_list = []
-
-    for entity_attack in entity.attacks:
+    return [
+        entity_attack
+        for entity_attack in entity.attacks
         if (
-                entity.stamina >= entity_attack.stamina_cost and \
-                entity.mana >= entity_attack.mana_cost
-        ):
-            usable_attacks_list.append(entity_attack)
-
-    return usable_attacks_list
+            entity.stamina >= entity_attack.stamina_cost
+            and entity.mana >= entity_attack.mana_cost
+        )
+    ]
 """property: A property that computes the list of attacks the entity can use."""
 
 @property
@@ -35,9 +33,7 @@ def values_view(entity):
 
     for value_name in DATA["entity_values"]:
         value = getattr(entity, value_name)
-        value_maximum_stat = getattr(entity, "maximum_" + value_name)
-
-        if value_maximum_stat:
+        if value_maximum_stat := getattr(entity, f"maximum_{value_name}"):
             lines.append(
                 DATA["values_view_line_template"].format(
                     value_name=value_name.capitalize(),
