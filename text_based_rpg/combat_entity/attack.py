@@ -34,12 +34,9 @@ def attack(attacking_entity, enemy, attack_to_use):
     attacking_entity.stamina -= attack_to_use.stamina_cost
     attacking_entity.mana -= attack_to_use.mana_cost
 
-    attack_was_evaded = util.resolve_random_condition([
-        (True, enemy.evasion),
-        (False, attacking_entity.evasion)
-    ])
-
-    if attack_was_evaded:
+    if attack_was_evaded := util.resolve_random_condition(
+        [(True, enemy.evasion), (False, attacking_entity.evasion)]
+    ):
         return flags.ATTACK_WAS_EVADED
 
     attack_stat = getattr(attacking_entity, attack_to_use.type.damage_stat)

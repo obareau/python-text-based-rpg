@@ -28,11 +28,12 @@ def inventory_view(player, item_type=None):
         interface.print_(DATA["inventory_view"]["no_equippable_items"])
         return
 
-    items_to_show = []
+    items_to_show = [
+        inventory_item
+        for inventory_item in player.inventory
+        if not item_type or item_type == inventory_item.type
+    ]
 
-    for inventory_item in player.inventory:
-        if not item_type or item_type == inventory_item.type:
-            items_to_show.append(inventory_item)
 
     for index, inventory_item in enumerate(items_to_show):
         interface.print_(

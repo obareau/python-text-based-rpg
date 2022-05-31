@@ -50,6 +50,8 @@ for value_name in DATA["entity_values"]:
 
     setattr(
         CombatEntity,
-        "maximum_" + value_name,
-        entity_value_properties.generate_maximum_value_stat_property(value_name)
+        f"maximum_{value_name}",
+        entity_value_properties.generate_maximum_value_stat_property(
+            value_name
+        ),
     )

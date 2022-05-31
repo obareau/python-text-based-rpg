@@ -16,7 +16,7 @@ def print_list_of_attacks(battle):
     
     """
     for attack in battle.player.entity.attacks:
-        line = attack.display_name + " --- Damage: " + str(attack.damage) + ". "
+        line = f"{attack.display_name} --- Damage: {str(attack.damage)}. "
 
         if attack.stamina_cost:
             line += DATA["list_of_attacks"]["stamina_cost_template"].format(

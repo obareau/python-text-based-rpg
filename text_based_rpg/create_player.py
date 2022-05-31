@@ -79,7 +79,7 @@ def create_player():
 
     command = interface.get_command(_CLASSES)
 
-    interface.print_("You have chosen the role of a {}.".format(command))
+    interface.print_(f"You have chosen the role of a {command}.")
     interface.print_()
 
     if command == _WARRIOR:

@@ -24,12 +24,13 @@ def unequip_item_interface(player):
     while True:
         player.equipment_view()
 
-        commands = [location for location in player.equipped_items]
+        commands = list(player.equipped_items)
         commands.append("back")
 
         interface.print_(
-            "You must enter " + interface.generate_readable_list(commands)
+            f"You must enter {interface.generate_readable_list(commands)}"
         )
+
 
         command = interface.get_command(commands)
 
